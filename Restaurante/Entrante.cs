@@ -10,4 +10,8 @@ public class Entrante : Producto
         this.esFrio = esFrio;
     }
 
+    public override void ObtenerDescripcion()
+    {
+        Console.WriteLine($"Entrante: {Nombre}, Precio: {Precio}€, Personas: {numPersonas}, Frío: {esFrio}");
+    }
 }

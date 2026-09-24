@@ -9,7 +9,7 @@ public class Producto
         Precio = precio;
     }
 
-    public void obtenerDescripcion()
+    public virtual void ObtenerDescripcion()
     {
         Console.WriteLine($"Producto: {Nombre}, Precio: {Precio}€");
     }
