@@ -12,6 +12,13 @@ public class Entrante : Producto
 
     public override void ObtenerDescripcion()
     {
-        Console.WriteLine($"Entrante: {Nombre}, Precio: {Precio}€, Personas: {numPersonas}, Frío: {esFrio}");
+        if (esFrio)
+        {
+            Console.WriteLine($"Entrante: {Nombre}, Precio: {Precio}€, Personas: {numPersonas}, Frío");
+        }
+        else
+        {
+            Console.WriteLine($"Entrante: {Nombre}, Precio: {Precio}€, Personas: {numPersonas}, Caliente");
+        }
     }
 }
