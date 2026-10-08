@@ -12,5 +12,13 @@ public class PlatoPrincipal : Producto
 
     public override void ObtenerDescripcion()
     {
+        if (esVegano)
+        {
+            Console.WriteLine($"Plato Principal: {Nombre}, Precio: {Precio}€, tiempo de preparación: {tiempoPreparacion}, Vegano");
+        }
+        else
+        {
+            Console.WriteLine($"Plato Principal: {Nombre}, Precio: {Precio}€, tiempo de preparación: {tiempoPreparacion}, No Vegano");
+        }
     }
 }
