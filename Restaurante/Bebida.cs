@@ -12,6 +12,13 @@ public class Bebida : Producto
 
     public override void ObtenerDescripcion()
     {
-
+        if (alcoholica)
+        {
+            Console.WriteLine($"Bebida: {Nombre}, Precio: {Precio}€, Tamaño: {tamaño}, Alcohólica");
+        }
+        else
+        {
+            Console.WriteLine($"Bebida: {Nombre}, Precio: {Precio}€, Tamaño: {tamaño}, No Alcohólica");
+        }
     }
 }
