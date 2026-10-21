@@ -44,13 +44,13 @@ foreach (Producto producto in carta)
     }
 }
 
-Console.WriteLine("\n ¿Que producto quieres?");
+Console.WriteLine("\n ¿Que producto quieres por numero?");
 string elegido = Console.ReadLine();
 if (int.TryParse(elegido, out int elegidoNum))
 {
     if (elegidoNum >= 1 && elegidoNum <= carta.Count)
     {
-        Console.WriteLine("Has elegido: \n");
+        Console.WriteLine("Has elegido:");
         Console.WriteLine(carta[elegidoNum - 1].Nombre + " - " + carta[elegidoNum - 1].Precio + "€");
     }
     else
@@ -62,3 +62,16 @@ else
 {
     Console.WriteLine("Debes introducir un número.");
 }
+
+Console.WriteLine("\n ¿Que producto quieres por nombre?");
+string elegidoNombre = Console.ReadLine();
+elegidoNombre = elegidoNombre.ToLower();
+if (carta.Exists(producto => producto.Nombre.ToLower() == elegidoNombre))
+{
+    Console.WriteLine("Producto encontrado: ");
+    Console.WriteLine(carta.Find(producto => producto.Nombre.ToLower() == elegidoNombre).Nombre + " - " + carta.Find(producto => producto.Nombre.ToLower() == elegidoNombre).Precio + "€");
+}else
+{
+    Console.WriteLine("No se ha encontrado el producto.");
+}
+
