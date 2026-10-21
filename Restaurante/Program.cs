@@ -26,3 +26,8 @@ carta.Add(Nestea);
 carta.Add(Cerveza);
 carta.Add(Frambuesa);
 carta.Add(TartaChocolate);
+
+foreach (Producto producto in carta)
+{
+    Console.WriteLine(producto.Nombre + " - " + producto.Precio + "€");
+}
