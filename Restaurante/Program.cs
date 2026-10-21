@@ -43,3 +43,14 @@ foreach (Producto producto in carta)
         contador++;
     }
 }
+
+Console.WriteLine("\n ¿Que producto quieres?");
+string elegido = Console.ReadLine();
+if (int.TryParse(elegido, out int elegidoNum))
+{
+Console.WriteLine("Has elegido: \n");
+Console.WriteLine(carta[elegidoNum - 1].Nombre + " - " + carta[elegidoNum - 1].Precio + "€");    
+}else
+{
+    Console.WriteLine("Debes introducir un número.");
+}
