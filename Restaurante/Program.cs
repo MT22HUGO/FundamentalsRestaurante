@@ -29,5 +29,5 @@ carta.Add(TartaChocolate);
 
 foreach (Producto producto in carta)
 {
-    Console.WriteLine(producto.Nombre + " - " + producto.Precio + "€");
+    Console.WriteLine(carta.IndexOf(producto)+1 + ". " + producto.Nombre + " - " + producto.Precio + "€");
 }
