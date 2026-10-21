@@ -17,7 +17,7 @@ Producto TartaChocolate = new Postre("Tarta de chocolate", 5.0, 200, true);
 
 Console.WriteLine("\n===================== Carta =====================\n");
 
-List <Producto> carta = new List<Producto>();
+List<Producto> carta = new List<Producto>();
 carta.Add(Calamares);
 carta.Add(Gazpacho);
 carta.Add(Macarrones);
@@ -29,7 +29,7 @@ carta.Add(TartaChocolate);
 
 foreach (Producto producto in carta)
 {
-    Console.WriteLine(carta.IndexOf(producto)+1 + ". " + producto.Nombre + " - " + producto.Precio + "€");
+    Console.WriteLine(carta.IndexOf(producto) + 1 + ". " + producto.Nombre + " - " + producto.Precio + "€");
 }
 
 Console.WriteLine("\n================= Carta Filtrada ================\n");
@@ -48,9 +48,17 @@ Console.WriteLine("\n ¿Que producto quieres?");
 string elegido = Console.ReadLine();
 if (int.TryParse(elegido, out int elegidoNum))
 {
-Console.WriteLine("Has elegido: \n");
-Console.WriteLine(carta[elegidoNum - 1].Nombre + " - " + carta[elegidoNum - 1].Precio + "€");    
-}else
+    if (elegidoNum >= 1 && elegidoNum <= carta.Count)
+    {
+        Console.WriteLine("Has elegido: \n");
+        Console.WriteLine(carta[elegidoNum - 1].Nombre + " - " + carta[elegidoNum - 1].Precio + "€");
+    }
+    else
+    {
+        Console.WriteLine("Ese producto no existe.");
+    }
+}
+else
 {
     Console.WriteLine("Debes introducir un número.");
 }
