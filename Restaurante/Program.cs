@@ -31,3 +31,15 @@ foreach (Producto producto in carta)
 {
     Console.WriteLine(carta.IndexOf(producto)+1 + ". " + producto.Nombre + " - " + producto.Precio + "€");
 }
+
+Console.WriteLine("\n================= Carta Filtrada ================\n");
+
+int contador = 1;
+foreach (Producto producto in carta)
+{
+    if (producto is Bebida)
+    {
+        Console.Write(contador + ". "); producto.ObtenerDescripcion();
+        contador++;
+    }
+}
