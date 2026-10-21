@@ -9,4 +9,15 @@ public class Postre : Producto
         this.calorias = calorias;
         this.dulce = dulce;
     }
+    public override void ObtenerDescripcion()
+    {
+        if (dulce)
+        {
+            Console.WriteLine($"Postre: {Nombre}, Precio: {Precio}€, Calorías: {calorias}, Dulce");
+        }
+        else
+        {
+            Console.WriteLine($"Postre: {Nombre}, Precio: {Precio}€, Calorías: {calorias}, No Dulce");
+        }
+    }
 }
