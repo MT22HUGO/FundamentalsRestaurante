@@ -75,3 +75,23 @@ if (carta.Exists(producto => producto.Nombre.ToLower() == elegidoNombre))
     Console.WriteLine("No se ha encontrado el producto.");
 }
 
+Console.WriteLine("\n Precio maximo?");
+string precioMax = Console.ReadLine();
+if (decimal.TryParse(precioMax, out decimal precioMaxNum))
+{
+    Console.WriteLine("Productos de hasta " + precioMaxNum + "€:");
+    int contadorProd = 0;
+    foreach(Producto producto in carta)
+    {if (decimal.Parse(producto.Precio.ToString()) <= precioMaxNum)
+        {
+            Console.WriteLine(producto.Nombre + " - " + producto.Precio + "€");
+            contadorProd++;
+        }
+    }if (contadorProd == 0)
+    {
+        Console.WriteLine("No hay productos con ese precio o inferior.");
+    }
+}else
+{
+    Console.WriteLine("Debes introducir un número.");
+}
