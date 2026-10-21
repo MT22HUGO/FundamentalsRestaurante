@@ -14,3 +14,15 @@ Producto Nestea = new Bebida("Nestea", 2.5, "0.33L", false);
 Producto Cerveza = new Bebida("Cerveza", 3.0, "0.5L", true);
 Producto Frambuesa = new Postre("Frambuesa", 4.0, 100, false);
 Producto TartaChocolate = new Postre("Tarta de chocolate", 5.0, 200, true);
+
+Console.WriteLine("\n===================== Carta =====================\n");
+
+List <Producto> carta = new List<Producto>();
+carta.Add(Calamares);
+carta.Add(Gazpacho);
+carta.Add(Macarrones);
+carta.Add(Ensalada);
+carta.Add(Nestea);
+carta.Add(Cerveza);
+carta.Add(Frambuesa);
+carta.Add(TartaChocolate);
