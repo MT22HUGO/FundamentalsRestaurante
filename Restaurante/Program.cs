@@ -105,3 +105,15 @@ if (decimal.TryParse(precioMax, out decimal precioMaxNum))
 {
     Console.WriteLine("Debes introducir un número.");
 }
+
+Producto masCaro = carta[0];
+foreach (Producto producto in carta)
+{
+    if (producto.Precio > masCaro.Precio)
+    {
+        masCaro = producto;
+    }
+}
+
+Console.WriteLine("El producto mas caro es:");
+Console.WriteLine(masCaro.Nombre + " - " + masCaro.Precio + "€");
