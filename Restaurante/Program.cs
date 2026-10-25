@@ -66,11 +66,21 @@ else
 Console.WriteLine("\n ¿Que producto quieres por nombre?");
 string elegidoNombre = Console.ReadLine();
 elegidoNombre = elegidoNombre.ToLower();
-if (carta.Exists(producto => producto.Nombre.ToLower() == elegidoNombre))
+Producto productoEncontrado = null;
+foreach (Producto producto in carta)
+{
+    if (producto.Nombre.ToLower() == elegidoNombre)
+    {
+        productoEncontrado = producto;
+    }
+}
+
+if (productoEncontrado != null)
 {
     Console.WriteLine("Producto encontrado: ");
-    Console.WriteLine(carta.Find(producto => producto.Nombre.ToLower() == elegidoNombre).Nombre + " - " + carta.Find(producto => producto.Nombre.ToLower() == elegidoNombre).Precio + "€");
-}else
+    Console.WriteLine(productoEncontrado.Nombre + " - " + productoEncontrado.Precio + "€");
+}
+else
 {
     Console.WriteLine("No se ha encontrado el producto.");
 }
