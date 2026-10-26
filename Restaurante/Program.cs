@@ -27,8 +27,47 @@ carta.Add(Cerveza);
 carta.Add(Frambuesa);
 carta.Add(TartaChocolate);
 
-MostrarCarta(carta);
+int salida = 0;
+while (salida == 0){
+Console.WriteLine("\n=========================================\n\n---------------Restaurante---------------\n\n=========================================\n"); 
+Console.WriteLine("1. Ver carta");
+Console.WriteLine("2. Elegir producto");
+Console.WriteLine("3. Buscar producto");
+Console.WriteLine("4. Producto por precio");
+Console.WriteLine("5. Producto más caro");
+Console.WriteLine("0. Salir\n");
+Console.WriteLine("Elige una opción:");
 
+String opcion = Console.ReadLine();
+
+int.Parse(opcion);
+
+switch(opcion)
+{
+    case "1":
+        MostrarCarta(carta);
+        break;
+    case "2":
+        ElegirProducto(carta);
+        break;
+    case "3":
+        BuscarProducto(carta);
+        break;
+    case "4":
+        MostrarProductosPorPrecio(carta);
+        break;
+    case "5":
+        MostrarProductoMasCaro(carta);
+        break;
+    case "0":
+        salida = 1;
+        Console.WriteLine("Saliendo...");
+        break;
+    default:
+        Console.WriteLine("Opción no válida.");
+        break;
+}
+}
 /*Console.WriteLine("\n================= Carta Filtrada ================\n");
 
 int contador = 1;
@@ -40,11 +79,6 @@ foreach (Producto producto in carta)
         contador++;
     }
 }*/
-
-ElegirProducto(carta);
-BuscarProducto(carta);
-MostrarProductosPorPrecio(carta);
-
 static void MostrarCarta(List<Producto> carta)
 {
     foreach (Producto producto in carta)
