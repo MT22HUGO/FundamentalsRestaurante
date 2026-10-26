@@ -42,28 +42,8 @@ foreach (Producto producto in carta)
 }
 
 ElegirProducto(carta);
+BuscarProducto(carta);
 
-Console.WriteLine("\n ¿Que producto quieres por nombre?");
-string elegidoNombre = Console.ReadLine();
-elegidoNombre = elegidoNombre.ToLower();
-Producto productoEncontrado = null;
-foreach (Producto producto in carta)
-{
-    if (producto.Nombre.ToLower() == elegidoNombre)
-    {
-        productoEncontrado = producto;
-    }
-}
-
-if (productoEncontrado != null)
-{
-    Console.WriteLine("Producto encontrado: ");
-    Console.WriteLine(productoEncontrado.Nombre + " - " + productoEncontrado.Precio + "€");
-}
-else
-{
-    Console.WriteLine("No se ha encontrado el producto.");
-}
 
 Console.WriteLine("\n Precio maximo?");
 string precioMax = Console.ReadLine();
@@ -125,5 +105,30 @@ if (int.TryParse(elegido, out int elegidoNum))
 else
 {
     Console.WriteLine("Debes introducir un número.");
+}
+}
+
+static void BuscarProducto(List<Producto> carta)
+{
+    Console.WriteLine("\n ¿Que producto quieres por nombre?");
+string elegidoNombre = Console.ReadLine();
+elegidoNombre = elegidoNombre.ToLower();
+Producto productoEncontrado = null;
+foreach (Producto producto in carta)
+{
+    if (producto.Nombre.ToLower() == elegidoNombre)
+    {
+        productoEncontrado = producto;
+    }
+}
+
+if (productoEncontrado != null)
+{
+    Console.WriteLine("Producto encontrado: ");
+    Console.WriteLine(productoEncontrado.Nombre + " - " + productoEncontrado.Precio + "€");
+}
+else
+{
+    Console.WriteLine("No se ha encontrado el producto.");
 }
 }
