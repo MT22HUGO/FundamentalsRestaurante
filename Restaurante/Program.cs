@@ -1,10 +1,10 @@
-﻿Producto Patatas = new Entrante("Patatas bravas", 10.0, 4, false);
+﻿/*Producto Patatas = new Entrante("Patatas bravas", 10.0, 4, false);
 Producto Nachos = new Entrante("Nachos", 7.0, 2, false);
 Producto EnsaladillaRusa = new Entrante("Ensaladilla Rusa", 6.0, 1, true);
 
 Patatas.ObtenerDescripcion();
 Nachos.ObtenerDescripcion();
-EnsaladillaRusa.ObtenerDescripcion();
+EnsaladillaRusa.ObtenerDescripcion();*/
 
 Producto Calamares = new Entrante("Calamares a la romana", 15.0, 3, false);
 Producto Gazpacho = new Entrante("Gazpacho", 5.0, 2, true);
@@ -15,7 +15,7 @@ Producto Cerveza = new Bebida("Cerveza", 3.0, "0.5L", true);
 Producto Frambuesa = new Postre("Frambuesa", 4.0, 100, false);
 Producto TartaChocolate = new Postre("Tarta de chocolate", 5.0, 200, true);
 
-Console.WriteLine("\n===================== Carta =====================\n");
+//Console.WriteLine("\n===================== Carta =====================\n");
 
 List<Producto> carta = new List<Producto>();
 carta.Add(Calamares);
@@ -29,7 +29,7 @@ carta.Add(TartaChocolate);
 
 MostrarCarta(carta);
 
-Console.WriteLine("\n================= Carta Filtrada ================\n");
+/*Console.WriteLine("\n================= Carta Filtrada ================\n");
 
 int contador = 1;
 foreach (Producto producto in carta)
@@ -39,7 +39,7 @@ foreach (Producto producto in carta)
         Console.Write(contador + ". "); producto.ObtenerDescripcion();
         contador++;
     }
-}
+}*/
 
 ElegirProducto(carta);
 BuscarProducto(carta);
