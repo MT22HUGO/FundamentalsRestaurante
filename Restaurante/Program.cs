@@ -27,10 +27,7 @@ carta.Add(Cerveza);
 carta.Add(Frambuesa);
 carta.Add(TartaChocolate);
 
-foreach (Producto producto in carta)
-{
-    Console.WriteLine(carta.IndexOf(producto) + 1 + ". " + producto.Nombre + " - " + producto.Precio + "€");
-}
+MostrarCarta(carta);
 
 Console.WriteLine("\n================= Carta Filtrada ================\n");
 
@@ -117,3 +114,11 @@ foreach (Producto producto in carta)
 
 Console.WriteLine("El producto mas caro es:");
 Console.WriteLine(masCaro.Nombre + " - " + masCaro.Precio + "€");
+
+static void MostrarCarta(List<Producto> carta)
+{
+    foreach (Producto producto in carta)
+    {
+        Console.WriteLine(carta.IndexOf(producto) + 1 + ". " + producto.Nombre + " - " + producto.Precio + "€");
+    }
+}
