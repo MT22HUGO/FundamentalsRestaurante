@@ -45,20 +45,6 @@ ElegirProducto(carta);
 BuscarProducto(carta);
 MostrarProductosPorPrecio(carta);
 
-
-
-Producto masCaro = carta[0];
-foreach (Producto producto in carta)
-{
-    if (producto.Precio > masCaro.Precio)
-    {
-        masCaro = producto;
-    }
-}
-
-Console.WriteLine("El producto mas caro es:");
-Console.WriteLine(masCaro.Nombre + " - " + masCaro.Precio + "€");
-
 static void MostrarCarta(List<Producto> carta)
 {
     foreach (Producto producto in carta)
@@ -69,71 +55,89 @@ static void MostrarCarta(List<Producto> carta)
 
 static void ElegirProducto(List<Producto> carta)
 {
-Console.WriteLine("\n ¿Que producto quieres por numero?");
-string elegido = Console.ReadLine();
-if (int.TryParse(elegido, out int elegidoNum))
-{
-    if (elegidoNum >= 1 && elegidoNum <= carta.Count)
+    Console.WriteLine("\n ¿Que producto quieres por numero?");
+    string elegido = Console.ReadLine();
+    if (int.TryParse(elegido, out int elegidoNum))
     {
-        Console.WriteLine("Has elegido:");
-        Console.WriteLine(carta[elegidoNum - 1].Nombre + " - " + carta[elegidoNum - 1].Precio + "€");
+        if (elegidoNum >= 1 && elegidoNum <= carta.Count)
+        {
+            Console.WriteLine("Has elegido:");
+            Console.WriteLine(carta[elegidoNum - 1].Nombre + " - " + carta[elegidoNum - 1].Precio + "€");
+        }
+        else
+        {
+            Console.WriteLine("Ese producto no existe.");
+        }
     }
     else
     {
-        Console.WriteLine("Ese producto no existe.");
+        Console.WriteLine("Debes introducir un número.");
     }
-}
-else
-{
-    Console.WriteLine("Debes introducir un número.");
-}
 }
 
 static void BuscarProducto(List<Producto> carta)
 {
     Console.WriteLine("\n ¿Que producto quieres por nombre?");
-string elegidoNombre = Console.ReadLine();
-elegidoNombre = elegidoNombre.ToLower();
-Producto productoEncontrado = null;
-foreach (Producto producto in carta)
-{
-    if (producto.Nombre.ToLower() == elegidoNombre)
+    string elegidoNombre = Console.ReadLine();
+    elegidoNombre = elegidoNombre.ToLower();
+    Producto productoEncontrado = null;
+    foreach (Producto producto in carta)
     {
-        productoEncontrado = producto;
+        if (producto.Nombre.ToLower() == elegidoNombre)
+        {
+            productoEncontrado = producto;
+        }
     }
-}
 
-if (productoEncontrado != null)
-{
-    Console.WriteLine("Producto encontrado: ");
-    Console.WriteLine(productoEncontrado.Nombre + " - " + productoEncontrado.Precio + "€");
-}
-else
-{
-    Console.WriteLine("No se ha encontrado el producto.");
-}
+    if (productoEncontrado != null)
+    {
+        Console.WriteLine("Producto encontrado: ");
+        Console.WriteLine(productoEncontrado.Nombre + " - " + productoEncontrado.Precio + "€");
+    }
+    else
+    {
+        Console.WriteLine("No se ha encontrado el producto.");
+    }
 }
 
 static void MostrarProductosPorPrecio(List<Producto> carta)
 {
     Console.WriteLine("\n Precio maximo?");
-string precioMax = Console.ReadLine();
-if (decimal.TryParse(precioMax, out decimal precioMaxNum))
-{
-    Console.WriteLine("Productos de hasta " + precioMaxNum + "€:");
-    int contadorProd = 0;
-    foreach(Producto producto in carta)
-    {if (decimal.Parse(producto.Precio.ToString()) <= precioMaxNum)
-        {
-            Console.WriteLine(producto.Nombre + " - " + producto.Precio + "€");
-            contadorProd++;
-        }
-    }if (contadorProd == 0)
+    string precioMax = Console.ReadLine();
+    if (decimal.TryParse(precioMax, out decimal precioMaxNum))
     {
-        Console.WriteLine("No hay productos con ese precio o inferior.");
+        Console.WriteLine("Productos de hasta " + precioMaxNum + "€:");
+        int contadorProd = 0;
+        foreach (Producto producto in carta)
+        {
+            if (decimal.Parse(producto.Precio.ToString()) <= precioMaxNum)
+            {
+                Console.WriteLine(producto.Nombre + " - " + producto.Precio + "€");
+                contadorProd++;
+            }
+        }
+        if (contadorProd == 0)
+        {
+            Console.WriteLine("No hay productos con ese precio o inferior.");
+        }
     }
-}else
-{
-    Console.WriteLine("Debes introducir un número.");
+    else
+    {
+        Console.WriteLine("Debes introducir un número.");
+    }
 }
+
+static void MostrarProductoMasCaro(List<Producto> carta)
+{
+    Producto masCaro = carta[0];
+    foreach (Producto producto in carta)
+    {
+        if (producto.Precio > masCaro.Precio)
+        {
+            masCaro = producto;
+        }
+    }
+
+    Console.WriteLine("El producto mas caro es:");
+    Console.WriteLine(masCaro.Nombre + " - " + masCaro.Precio + "€");
 }
