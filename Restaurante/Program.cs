@@ -29,46 +29,47 @@ carta.Add(Frambuesa);
 carta.Add(TartaChocolate);
 
 int salida = 0;
-while (salida == 0){
-Console.WriteLine("\n=========================================\n\n---------------Restaurante---------------\n\n=========================================\n"); 
-Console.WriteLine("1. Ver carta");
-Console.WriteLine("2. Añadir producto al pedido");
-Console.WriteLine("3. Ver pedido");
-Console.WriteLine("4. Buscar producto");
-Console.WriteLine("5. Producto por precio");
-Console.WriteLine("0. Salir\n");
-Console.WriteLine("Elige una opción:");
-
-String opcion = Console.ReadLine();
-
-int.Parse(opcion);
-
-switch(opcion)
+while (salida == 0)
 {
-    case "1":
-        MostrarCarta(carta);
-        break;
-    case "2":
-        MostrarCarta(carta);
-        AgregarProductoAlPedido(carta, pedido);
-        break;
-    case "3":
-        MostrarPedido(pedido);
-        break;
-    case "4":
-        BuscarProducto(carta);
-        break;
-    case "5":
-        MostrarProductosPorPrecio(carta);
-        break;
-    case "0":
-        salida = 1;
-        Console.WriteLine("Saliendo...");
-        break;
-    default:
-        Console.WriteLine("Opción no válida.");
-        break;
-}
+    Console.WriteLine("\n=========================================\n\n---------------Restaurante---------------\n\n=========================================\n");
+    Console.WriteLine("1. Ver carta");
+    Console.WriteLine("2. Añadir producto al pedido");
+    Console.WriteLine("3. Ver pedido");
+    Console.WriteLine("4. Eliminar producto del pedido");
+    Console.WriteLine("5. Producto por precio");
+    Console.WriteLine("0. Salir\n");
+    Console.WriteLine("Elige una opción:");
+
+    String opcion = Console.ReadLine();
+
+    int.Parse(opcion);
+
+    switch (opcion)
+    {
+        case "1":
+            MostrarCarta(carta);
+            break;
+        case "2":
+            MostrarCarta(carta);
+            AgregarProductoAlPedido(carta, pedido);
+            break;
+        case "3":
+            MostrarPedido(pedido);
+            break;
+        case "4":
+            EliminarProductoDelPedido(pedido);
+            break;
+        case "5":
+            MostrarProductosPorPrecio(carta);
+            break;
+        case "0":
+            salida = 1;
+            Console.WriteLine("Saliendo...");
+            break;
+        default:
+            Console.WriteLine("Opción no válida.");
+            break;
+    }
 }
 /*Console.WriteLine("\n================= Carta Filtrada ================\n");
 
@@ -181,7 +182,7 @@ static void MostrarProductoMasCaro(List<Producto> carta)
 static void AgregarProductoAlPedido(List<Producto> carta, List<Producto> pedido)
 {
     Console.WriteLine("¿Qué producto quieres añadir?");
-    string eleccion= Console.ReadLine();
+    string eleccion = Console.ReadLine();
     if (int.TryParse(eleccion, out int elegidoNum))
     {
         if (elegidoNum >= 1 && elegidoNum <= carta.Count)
@@ -202,16 +203,54 @@ static void AgregarProductoAlPedido(List<Producto> carta, List<Producto> pedido)
 
 static void MostrarPedido(List<Producto> pedido)
 {
-    if(pedido.Count > 0){
-    double total = 0;
-    Console.WriteLine("=== TU PEDIDO ===");
-    foreach (Producto producto in pedido)
+    if (pedido.Count > 0)
     {
-        Console.WriteLine(producto.Nombre + " - " + producto.Precio + "€");
-        total += producto.Precio;
+        double total = 0;
+        Console.WriteLine("=== TU PEDIDO ===");
+        foreach (Producto producto in pedido)
+        {
+            Console.WriteLine(producto.Nombre + " - " + producto.Precio + "€");
+            total += producto.Precio;
+        }
+        Console.WriteLine("-----------------------");
+        Console.WriteLine("TOTAL: " + total + "€");
     }
-    Console.WriteLine("-----------------------");
-    Console.WriteLine("TOTAL: " + total + "€");
+    else
+    {
+        Console.WriteLine("El pedido está vacío.");
+    }
+}
+
+static void EliminarProductoDelPedido(List<Producto> pedido)
+{
+    if (pedido.Count > 0)
+    {
+        double total = 0;
+        Console.WriteLine("=== TU PEDIDO ===");
+        foreach (Producto producto in pedido)
+        {
+            Console.WriteLine(pedido.IndexOf(producto) + 1 + ". " + producto.Nombre + " - " + producto.Precio + "€");
+            total += producto.Precio;
+        }
+        Console.WriteLine("¿Qué producto quieres eliminar?");
+        string eleccion = Console.ReadLine();
+        if (int.TryParse(eleccion, out int elegidoNum))
+        {
+            if (elegidoNum >= 1 && elegidoNum <= pedido.Count)
+            {
+                Console.WriteLine(pedido[elegidoNum - 1].Nombre + " eliminado del pedido.");
+                pedido.RemoveAt(elegidoNum - 1);
+                
+            }
+            else
+            {
+                Console.WriteLine("Ese producto no está en el pedido.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Debes introducir un número.");
+        }
     }
     else
     {
