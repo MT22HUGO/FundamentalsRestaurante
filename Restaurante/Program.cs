@@ -36,7 +36,7 @@ while (salida == 0)
     Console.WriteLine("2. Añadir producto al pedido");
     Console.WriteLine("3. Ver pedido");
     Console.WriteLine("4. Eliminar producto del pedido");
-    Console.WriteLine("5. Producto por precio");
+    Console.WriteLine("5. Finalizar pedido");
     Console.WriteLine("0. Salir\n");
     Console.WriteLine("Elige una opción:");
 
@@ -60,7 +60,7 @@ while (salida == 0)
             EliminarProductoDelPedido(pedido);
             break;
         case "5":
-            MostrarProductosPorPrecio(carta);
+            FinalizarPedido(pedido);
             break;
         case "0":
             salida = 1;
@@ -255,5 +255,28 @@ static void EliminarProductoDelPedido(List<Producto> pedido)
     else
     {
         Console.WriteLine("El pedido está vacío.");
+    }
+}
+
+static void FinalizarPedido(List<Producto> pedido)
+{
+    if (pedido.Count > 0)
+    {
+        double total = 0;
+        Console.WriteLine("===== TICKET =====");
+        foreach (Producto producto in pedido)
+        {
+            Console.WriteLine(producto.Nombre + " - " + producto.Precio + "€");
+            total += producto.Precio;
+        }
+        Console.WriteLine("-----------------------");
+        Console.WriteLine("Productos: " + pedido.Count);
+        Console.WriteLine("TOTAL: " + total + "€");
+        Console.WriteLine("Gracias por tu visita.");
+        pedido.Clear();
+    }
+    else
+    {
+        Console.WriteLine("Crea un pedido antes de finalizarlo.");
     }
 }
