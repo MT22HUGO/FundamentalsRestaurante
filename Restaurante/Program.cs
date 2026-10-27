@@ -53,6 +53,7 @@ switch(opcion)
         AgregarProductoAlPedido(carta, pedido);
         break;
     case "3":
+        MostrarPedido(pedido);
         break;
     case "4":
         BuscarProducto(carta);
@@ -196,5 +197,24 @@ static void AgregarProductoAlPedido(List<Producto> carta, List<Producto> pedido)
     else
     {
         Console.WriteLine("Debes introducir un número.");
+    }
+}
+
+static void MostrarPedido(List<Producto> pedido)
+{
+    if(pedido.Count > 0){
+    double total = 0;
+    Console.WriteLine("=== TU PEDIDO ===");
+    foreach (Producto producto in pedido)
+    {
+        Console.WriteLine(producto.Nombre + " - " + producto.Precio + "€");
+        total += producto.Precio;
+    }
+    Console.WriteLine("-----------------------");
+    Console.WriteLine("TOTAL: " + total + "€");
+    }
+    else
+    {
+        Console.WriteLine("El pedido está vacío.");
     }
 }
