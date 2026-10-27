@@ -18,6 +18,7 @@ Producto TartaChocolate = new Postre("Tarta de chocolate", 5.0, 200, true);
 //Console.WriteLine("\n===================== Carta =====================\n");
 
 List<Producto> carta = new List<Producto>();
+List<Producto> pedido = new List<Producto>();
 carta.Add(Calamares);
 carta.Add(Gazpacho);
 carta.Add(Macarrones);
@@ -31,10 +32,10 @@ int salida = 0;
 while (salida == 0){
 Console.WriteLine("\n=========================================\n\n---------------Restaurante---------------\n\n=========================================\n"); 
 Console.WriteLine("1. Ver carta");
-Console.WriteLine("2. Elegir producto");
-Console.WriteLine("3. Buscar producto");
-Console.WriteLine("4. Producto por precio");
-Console.WriteLine("5. Producto más caro");
+Console.WriteLine("2. Añadir producto al pedido");
+Console.WriteLine("3. Ver pedido");
+Console.WriteLine("4. Buscar producto");
+Console.WriteLine("5. Producto por precio");
 Console.WriteLine("0. Salir\n");
 Console.WriteLine("Elige una opción:");
 
@@ -48,16 +49,16 @@ switch(opcion)
         MostrarCarta(carta);
         break;
     case "2":
-        ElegirProducto(carta);
+        MostrarCarta(carta);
+        AgregarProductoAlPedido(carta, pedido);
         break;
     case "3":
-        BuscarProducto(carta);
         break;
     case "4":
-        MostrarProductosPorPrecio(carta);
+        BuscarProducto(carta);
         break;
     case "5":
-        MostrarProductoMasCaro(carta);
+        MostrarProductosPorPrecio(carta);
         break;
     case "0":
         salida = 1;
@@ -174,4 +175,26 @@ static void MostrarProductoMasCaro(List<Producto> carta)
 
     Console.WriteLine("El producto mas caro es:");
     Console.WriteLine(masCaro.Nombre + " - " + masCaro.Precio + "€");
+}
+
+static void AgregarProductoAlPedido(List<Producto> carta, List<Producto> pedido)
+{
+    Console.WriteLine("¿Qué producto quieres añadir?");
+    string eleccion= Console.ReadLine();
+    if (int.TryParse(eleccion, out int elegidoNum))
+    {
+        if (elegidoNum >= 1 && elegidoNum <= carta.Count)
+        {
+            Console.WriteLine(carta[elegidoNum - 1].Nombre + " añadido al pedido.");
+            pedido.Add(carta[elegidoNum - 1]);
+        }
+        else
+        {
+            Console.WriteLine("Ese producto no existe.");
+        }
+    }
+    else
+    {
+        Console.WriteLine("Debes introducir un número.");
+    }
 }
