@@ -37,6 +37,9 @@ while (salida == 0)
     Console.WriteLine("3. Ver pedido");
     Console.WriteLine("4. Eliminar producto del pedido");
     Console.WriteLine("5. Finalizar pedido");
+    Console.WriteLine("6. Buscar producto");
+    Console.WriteLine("7. Productos por precio");
+    Console.WriteLine("8. Producto más caro");
     Console.WriteLine("0. Salir\n");
     Console.WriteLine("Elige una opción:");
 
@@ -61,6 +64,15 @@ while (salida == 0)
             break;
         case "5":
             FinalizarPedido(pedido);
+            break;
+        case "6":
+            BuscarProducto(pedido);
+            break;
+        case "7":
+            MostrarProductosPorPrecio(pedido);
+            break;
+        case "8":
+            MostrarProductoMasCaro(pedido);
             break;
         case "0":
             salida = 1;
@@ -240,7 +252,7 @@ static void EliminarProductoDelPedido(List<Producto> pedido)
             {
                 Console.WriteLine(pedido[elegidoNum - 1].Nombre + " eliminado del pedido.");
                 pedido.RemoveAt(elegidoNum - 1);
-                
+
             }
             else
             {
